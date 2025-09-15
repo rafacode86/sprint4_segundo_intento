@@ -2,9 +2,22 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Cocktail extends Model
 {
-    //
+    use HasFactory;
+
+    protected $fillable = ["nombre", "origen", "alcoholico"];
+
+    protected $casts = ["alcoholico" => "boolean"];
+
+    public function ingredients() {
+        return $this->belongsToMany(
+            Ingredient::class,
+            "cocktail_ingredient",
+            "id_cocktail",
+            "id_ingrediente")->whithTimestamps();
+    }
 }
