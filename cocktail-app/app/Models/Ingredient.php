@@ -9,7 +9,7 @@ class Ingredient extends Model
 {   
     use HasFactory;
 
-    protected $fillable = ["nombre", "tipo", "sabor"];
+    protected $fillable = ["nombre", "tipo", "sabor"]; //tipo y sabor sera enum
 
     public function cocktails() {
         return $this->belongsToMany(
@@ -18,4 +18,5 @@ class Ingredient extends Model
             "id_ingrediente",
             "id_cocktail")->withTimestamps();
     }
+
 }
