@@ -12,8 +12,18 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('cocktail_ingredient', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
+            $table->unsignedBigInteger('id_cocktail');
+            $table->unsignedBigInteger('id_ingrediente');
+
+            $table->primary(['id_cocktail', 'id_ingrediente']);
+
+            $table->foreign('id_cocktail')
+                  ->references('id')->on('cocktails')
+                  ->onDelete('cascade');
+
+            $table->foreign('id_ingrediente')
+                  ->references('id')->on('ingredientes')
+                  ->onDelete('cascade');
         });
     }
 
