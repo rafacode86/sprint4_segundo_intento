@@ -18,6 +18,6 @@ class Cocktail extends Model
             Ingredient::class,
             "cocktail_ingredient",
             "id_cocktail",
-            "id_ingrediente")->whithTimestamps();
+            "id_ingrediente")->withTimestamps();
     }
 }
