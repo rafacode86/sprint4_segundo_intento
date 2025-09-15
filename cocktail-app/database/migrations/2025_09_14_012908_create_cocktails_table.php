@@ -13,6 +13,9 @@ return new class extends Migration
     {
         Schema::create('cocktails', function (Blueprint $table) {
             $table->id();
+            $table->string("nombre", 60);
+            $table->string("origen", 60);
+            $table->boolean("alcoholico");
             $table->timestamps();
         });
     }
