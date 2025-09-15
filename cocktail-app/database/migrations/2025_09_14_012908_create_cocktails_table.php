@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('nombre', 60);
             $table->string('origen', 40);
-            $table->boolean('alcholico');
+            $table->boolean('alcoholico');
             $table->timestamps();
         });
     }
