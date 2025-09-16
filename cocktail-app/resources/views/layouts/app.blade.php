@@ -1,36 +1,43 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <title>{{ config('app.name', 'Laravel') }}</title>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>App de Cócteles</title>
+    @vite('resources/css/app.css')
+</head>
+<body class="bg-gray-100 font-sans antialiased">
 
-        <!-- Fonts -->
-        <link rel="preconnect" href="https://fonts.bunny.net">
-        <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
-
-        <!-- Scripts -->
-        @vite(['resources/css/app.css', 'resources/js/app.js'])
-    </head>
-    <body class="font-sans antialiased">
-        <div class="min-h-screen bg-gray-100">
-            @include('layouts.navigation')
-
-            <!-- Page Heading -->
-            @isset($header)
-                <header class="bg-white shadow">
-                    <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                        {{ $header }}
-                    </div>
-                </header>
-            @endisset
-
-            <!-- Page Content -->
-            <main>
-                {{ $slot }}
-            </main>
+    <!-- Barra superior -->
+    <nav class="bg-white shadow p-4 flex justify-between">
+        <div>
+            <a href="{{ route('cocktails.index') }}" 
+               class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">
+               Cócteles
+            </a>
+            <a href="{{ route('ingredients.index') }}" 
+               class="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600">
+               Ingredientes
+            </a>
         </div>
-    </body>
+        <div>
+            @auth
+                <span class="mr-4">Hola, {{ auth()->user()->name }}</span>
+                <form action="{{ route('logout') }}" method="POST" class="inline">
+                    @csrf
+                    <button class="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600">
+                        Salir
+                    </button>
+                </form>
+            @endauth
+        </div>
+    </nav>
+
+    <!-- Contenido principal -->
+    <main class="max-w-4xl mx-auto p-6">
+        @yield('content')
+    </main>
+
+</body>
+
 </html>
