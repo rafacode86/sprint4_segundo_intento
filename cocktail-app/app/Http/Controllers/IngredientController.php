@@ -59,16 +59,25 @@ class IngredientController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Ingredient $ingredient)
     {
-        //
+        $data = $request->validate([
+            "nombre" => "required|string|max:45",
+            "tipo" => "required|in: alcohol, zumo, refresco, aderezo",
+            "sabor" => "required|in: dulce, salado, amargo, picante, otro",
+        ]);
+
+        $ingredient->update($data);
+
+        return redirect()->route("ingredient.index");
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Ingredient $ingredient)
     {
-        //
+        $ingredient->delete();
+        return redirect()->route("ingredients.index");
     }
 }
