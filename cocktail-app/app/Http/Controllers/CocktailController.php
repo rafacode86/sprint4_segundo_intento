@@ -6,7 +6,7 @@ use App\Models\Cocktail;
 use App\Models\Ingredient;
 use Illuminate\Http\Request;
 
-class CoktailController extends Controller
+class CocktailController extends Controller
 {
     /**
      * Display a listing of the resource.
