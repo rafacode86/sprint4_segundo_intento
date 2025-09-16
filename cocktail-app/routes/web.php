@@ -1,5 +1,6 @@
 <?php
 
+
 use App\Http\Controllers\CocktailController;
 use App\Http\Controllers\IngredientController;
 use Illuminate\Support\Facades\Route;
@@ -14,3 +15,4 @@ use Illuminate\Support\Facades\Route;
     });
 
     require __DIR__.'/auth.php';
+
