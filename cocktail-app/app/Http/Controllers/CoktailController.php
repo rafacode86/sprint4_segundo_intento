@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Ingredient;
 use Illuminate\Http\Request;
 
 class CoktailController extends Controller
@@ -11,7 +12,7 @@ class CoktailController extends Controller
      */
     public function index()
     {
-        //
+        
     }
 
     /**
