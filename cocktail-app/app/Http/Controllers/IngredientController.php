@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Ingredient;
 use Illuminate\Http\Request;
 
 class IngredientController extends Controller
@@ -11,7 +12,8 @@ class IngredientController extends Controller
      */
     public function index()
     {
-        //
+        $ingredients = Ingredient::all();
+        return view("ingredients.index", compact("ingredients"));
     }
 
     /**
@@ -19,7 +21,7 @@ class IngredientController extends Controller
      */
     public function create()
     {
-        //
+        return view("ingredients.create");
     }
 
     /**
@@ -27,7 +29,15 @@ class IngredientController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->validate([
+            "nombre" => "required|string|max:45",
+            "tipo" => "required|in: alcohol, zumo, refresco, aderezo",
+            "sabor" => "required|in: dulce, salado, amargo, picante, otro",
+        ]);
+
+        Ingredient::create($data);
+
+        return redirect()->route("ingredients.index");
     }
 
     /**
@@ -41,9 +51,9 @@ class IngredientController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Ingredient $ingredient)
     {
-        //
+        return view("ingredients.edit", compact("ingredient"));
     }
 
     /**
