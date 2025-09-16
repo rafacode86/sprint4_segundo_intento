@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Cocktail;
 use App\Models\Ingredient;
 use Illuminate\Http\Request;
 
@@ -12,7 +13,8 @@ class CoktailController extends Controller
      */
     public function index()
     {
-        
+        $cocktails = Cocktail::with("ingredients")->get();
+        return view("cocktails.index", compact("cocktails"));
     }
 
     /**
@@ -20,7 +22,8 @@ class CoktailController extends Controller
      */
     public function create()
     {
-        //
+        $ingredients = Ingredient::all();
+        return view("cocktails.create", compact("ingredients"));
     }
 
     /**
@@ -28,7 +31,25 @@ class CoktailController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->validate([
+            "nombre"     => "required|string|max:60",
+            "origen"     => "required|string|max:40",
+            "alcoholico" => "required|boolean",
+            "ingredients" => "array",
+            "ingredients.*" => "exists:ingredients,id",
+        ]);
+
+        $cocktail = Cocktail::create([
+            "nombre" => $data["nombre"],
+            "origen" => $data["origen"],
+            "alcoholico" => $data["alcoholico"],
+        ]);
+
+        if (isset($data["ingredients"])) {
+            $cocktail->ingredients()->attach($data["ingredients"]);
+        }
+
+        return redirect()->route("cocktail.index");
     }
 
     /**
