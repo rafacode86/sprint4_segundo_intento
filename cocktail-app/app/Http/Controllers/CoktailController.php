@@ -63,24 +63,43 @@ class CoktailController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Cocktail $cocktail)
     {
-        //
+        $ingredients = Ingredient::all();
+        $cocktail->load("ingredients");
+        return view("cocktails.edit", compact("cocktail", "ingredients"));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Cocktail $cocktail)
     {
-        //
+        $data = $request->validate([
+            "nombre"     => "required|string|max:60",
+            "origen"     => "required|string|max:40",
+            "alcoholico" => "required|boolean",
+            "ingredients" => "array",
+            "ingredients.*" => "exists:ingredients,id",
+        ]);
+
+        $cocktail->update([
+            "nombre"     => $data["nombre"],
+            "origen"     => $data["origen"],
+            "alcoholico" => $data["alcoholico"],
+        ]);
+
+        $cocktail->ingredients()->sync($data["ingredients"] ?? []);
+
+        return redirect()->route("cocktail.index");
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Cocktail $cocktail)
     {
-        //
+        $cocktail->delete();
+        return redirect()->route("cocktails.index");
     }
 }
