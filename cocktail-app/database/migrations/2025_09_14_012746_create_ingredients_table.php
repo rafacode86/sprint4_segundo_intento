@@ -13,9 +13,11 @@ return new class extends Migration
     {
         Schema::create('ingredients', function (Blueprint $table) {
             $table->id();
+
             $table->string('nombre', 45);
             $table->enum('tipo', ["alcohol","zumo","refresco","aderezo"]);
             $table->enum('sabor', ["dulce", "salado", "amargo", "picante", "otro"]);
+
             $table->timestamps();
         });
     }
