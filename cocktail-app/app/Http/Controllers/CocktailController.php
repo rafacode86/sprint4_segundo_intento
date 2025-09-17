@@ -49,7 +49,7 @@ class CocktailController extends Controller
             $cocktail->ingredients()->attach($data["ingredients"]);
         }
 
-        return redirect()->route("cocktail.index");
+        return redirect()->route("cocktails.index");
     }
 
     /**
