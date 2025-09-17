@@ -1,7 +1,6 @@
 <x-guest-layout>
     <h1 class="text-2xl font-bold mb-6 text-center">Iniciar sesión</h1>
 
-    <!-- Mensajes de validación -->
     @if ($errors->any())
         <div class="mb-4 text-sm text-red-600">
             <ul class="list-disc pl-4">
@@ -31,27 +30,20 @@
 
         <!-- Recordarme -->
         <div class="flex items-center mb-4">
-            <input id="remember_me" type="checkbox" name="remember"
-                class="mr-2 rounded border-gray-300 text-blue-600 shadow-sm focus:ring-blue-500">
+            <input id="remember_me" type="checkbox" name="remember" class="mr-2">
             <label for="remember_me" class="text-sm text-gray-600">Recordarme</label>
         </div>
 
-        <!-- Botón de login -->
-        <div>
-            <button type="submit"
-                class="w-full bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600">
-                Iniciar sesión
-            </button>
-        </div>
+        <button type="submit" class="w-full bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600">
+            Iniciar sesión
+        </button>
     </form>
 
-    <!-- Enlace a registro -->
     <div class="mt-6 text-center">
-        <p class="text-gray-600 text-sm">
+        <p class="text-sm text-gray-600">
             ¿No tienes cuenta?
-            <a href="{{ route('register') }}" class="text-blue-500 hover:underline">
-                Regístrate aquí
-            </a>
+            <a href="{{ route('register') }}" class="text-blue-500 hover:underline">Regístrate aquí</a>
         </p>
     </div>
 </x-guest-layout>
+
