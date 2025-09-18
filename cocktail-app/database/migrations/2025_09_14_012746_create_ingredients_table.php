@@ -16,7 +16,7 @@ return new class extends Migration
 
             $table->string('nombre', 45);
             $table->enum('tipo', ["alcohol","zumo","refresco","aderezo"]);
-            $table->enum('sabor', ["dulce", "salado", "amargo", "picante", "otro"]);
+            $table->enum('sabor', ["dulce", "salado", "amargo", "picante", "acido", "otro"]);
 
             $table->timestamps();
         });

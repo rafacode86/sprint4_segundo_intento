@@ -47,6 +47,7 @@
                 <option value="salado" {{ old('sabor', $ingredient->sabor) == 'salado' ? 'selected' : '' }}>Salado</option>
                 <option value="amargo" {{ old('sabor', $ingredient->sabor) == 'amargo' ? 'selected' : '' }}>Amargo</option>
                 <option value="picante" {{ old('sabor', $ingredient->sabor) == 'picante' ? 'selected' : '' }}>Picante</option>
+                <option value="acido" {{ old('sabor', $ingredient->sabor) == 'acido' ? 'selected' : '' }}>Ácido</option>
                 <option value="otro" {{ old('sabor', $ingredient->sabor) == 'otro' ? 'selected' : '' }}>Otro</option>
             </select>
         </div>

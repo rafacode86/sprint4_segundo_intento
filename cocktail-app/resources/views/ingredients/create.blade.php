@@ -46,6 +46,7 @@
                 <option value="salado">Salado</option>
                 <option value="amargo">Amargo</option>
                 <option value="picante">Picante</option>
+                <option value="acido">Ácido</option>
                 <option value="otro">Otro</option>
             </select>
         </div>
