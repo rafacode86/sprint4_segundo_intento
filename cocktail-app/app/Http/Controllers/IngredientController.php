@@ -31,8 +31,8 @@ class IngredientController extends Controller
     {
         $data = $request->validate([
             "nombre" => "required|string|max:45",
-            "tipo" => "required|in: alcohol, zumo, refresco, aderezo",
-            "sabor" => "required|in: dulce, salado, amargo, picante, otro",
+            "tipo" => "required|in:alcohol,zumo,refresco,aderezo",
+            "sabor" => "required|in:dulce,salado,amargo,picante,otro",
         ]);
 
         Ingredient::create($data);
@@ -63,13 +63,13 @@ class IngredientController extends Controller
     {
         $data = $request->validate([
             "nombre" => "required|string|max:45",
-            "tipo" => "required|in: alcohol, zumo, refresco, aderezo",
-            "sabor" => "required|in: dulce, salado, amargo, picante, otro",
+            "tipo" => "required|in:alcohol,zumo,refresco,aderezo",
+            "sabor" => "required|in:dulce,salado,amargo,picante,otro",
         ]);
 
         $ingredient->update($data);
 
-        return redirect()->route("ingredient.index");
+        return redirect()->route("ingredients.index");
     }
 
     /**

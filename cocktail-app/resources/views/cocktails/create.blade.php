@@ -31,10 +31,13 @@
         </div>
 
         
-        <div class="flex items-center">
-            <input type="checkbox" name="alcoholico" id="alcoholico" value="1" 
-                class="mr-2 border-gray-300 rounded text-blue-600 shadow-sm focus:ring-blue-500">
-            <label for="alcoholico" class="text-gray-700">Contiene alcohol</label>
+        <div>
+            <label for="alcoholico" class="block text-gray-700">¿Contiene alcohol?</label>
+            <select name="alcoholico" id="alcoholico" required
+                class="w-full mt-1 px-3 py-2 border rounded focus:ring focus:ring-blue-300">
+                <option value="1" {{ old('alcoholico') == '1' ? 'selected' : '' }}>Sí</option>
+                <option value="0" {{ old('alcoholico') == '0' ? 'selected' : '' }}>No</option>
+            </select>
         </div>
 
         
