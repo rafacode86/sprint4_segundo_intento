@@ -7,9 +7,9 @@
 </head>
 <body class="bg-gray-100 font-sans antialiased">
 
-    <!-- Barra superior -->
+
     <nav class="bg-green-600 shadow p-4 flex justify-between items-center">
-        <!-- Navegación izquierda -->
+   
         <div class="flex space-x-4">
             <a href="{{ route('cocktails.index') }}" 
                class="px-4 py-2 bg-green-700 text-white rounded hover:bg-green-800 transition">
@@ -21,7 +21,6 @@
             </a>
         </div>
 
-        <!-- Navegación derecha -->
         <div class="flex items-center space-x-4">
             @auth
                 <span class="text-white">Hola, {{ auth()->user()->name }}</span>
@@ -44,7 +43,6 @@
         </div>
     </nav>
 
-    <!-- Contenido principal -->
     <main class="max-w-6xl mx-auto p-6">
         @yield('content')
     </main>
