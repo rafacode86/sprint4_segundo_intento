@@ -18,7 +18,6 @@
         @csrf
         @method('PUT')
 
-        <!-- Nombre -->
         <div>
             <label for="nombre" class="block text-gray-700">Nombre</label>
             <input type="text" name="nombre" id="nombre" 
@@ -26,7 +25,6 @@
                    class="w-full mt-1 px-3 py-2 border rounded focus:ring focus:ring-green-300">
         </div>
 
-        <!-- Tipo -->
         <div>
             <label for="tipo" class="block text-gray-700">Tipo</label>
             <select name="tipo" id="tipo" required
@@ -38,7 +36,6 @@
             </select>
         </div>
 
-        <!-- Sabor -->
         <div>
             <label for="sabor" class="block text-gray-700">Sabor</label>
             <select name="sabor" id="sabor" required
@@ -52,7 +49,7 @@
             </select>
         </div>
 
-        <!-- Botones -->
+
         <div class="flex justify-end space-x-2">
             <a href="{{ route('ingredients.index') }}" 
                class="px-4 py-2 bg-gray-400 text-white rounded hover:bg-gray-500">Volver</a>
