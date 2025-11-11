@@ -42,17 +42,24 @@
         </div>
 
         <div>
-            <label for="ingredients" class="block text-gray-700">Ingredientes</label>
-            <select name="ingredients[]" id="ingredients" multiple
-                class="w-full mt-1 px-3 py-2 border rounded focus:ring focus:ring-blue-300">
+            <span class="block text-gray-700">Ingredientes</span>
+            @php
+                $selectedIngredients = old('ingredients', $cocktail->ingredients->pluck('id')->toArray());
+            @endphp
+            <div class="mt-2 grid grid-cols-1 md:grid-cols-2 gap-2">
                 @foreach($ingredients as $ing)
-                    <option value="{{ $ing->id }}"
-                        {{ in_array($ing->id, old('ingredients', $cocktail->ingredients->pluck('id')->toArray())) ? 'selected' : '' }}>
-                        {{ $ing->nombre }} ({{ $ing->tipo }})
-                    </option>
+                    <label class="flex items-start space-x-2 px-3 py-2 border rounded hover:border-blue-400 cursor-pointer">
+                        <input type="checkbox" name="ingredients[]" value="{{ $ing->id }}"
+                               class="mt-1"
+                               {{ in_array($ing->id, $selectedIngredients) ? 'checked' : '' }}>
+                        <span class="text-sm">
+                            <strong class="block">{{ $ing->nombre }}</strong>
+                            <span class="text-gray-500 text-xs">{{ ucfirst($ing->tipo) }}</span>
+                        </span>
+                    </label>
                 @endforeach
-            </select>
-            <p class="text-xs text-gray-500 mt-1">Usa Ctrl o Shift para seleccionar varios ingredientes.</p>
+            </div>
+            <p class="text-xs text-gray-500 mt-1">Marca uno o varios ingredientes.</p>
         </div>
 
         <div class="flex justify-end space-x-2">
